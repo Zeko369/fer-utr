@@ -33,7 +33,10 @@ then
     fi
   done
 
-  echo "Errors: $errors"
+  if [ "$errors" != "" ]
+  then
+    echo "Errors: $errors"
+  fi
   echo "Completed: $(($count-$error_count+1))/$(($count + 1))"
 elif [ -z "$2" ]
 then
