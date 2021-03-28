@@ -2,15 +2,14 @@ from sys import stdin
 
 
 def add_rec(changes, key, prev=set(), seen=set()):
-    if key in seen:
-        return prev
-    prev.add(key)
-    seen.add(key)
+    if key not in seen:
+        prev.add(key)
+        seen.add(key)
 
-    if key != '#' and '$' in changes[key].keys():
-        prev.update(changes[key]['$'])
-        for a in changes[key]['$']:
-            prev.update(add_rec(changes, a, prev, seen))
+        if key != '#' and '$' in changes[key].keys():
+            prev.update(changes[key]['$'])
+            for a in changes[key]['$']:
+                prev.update(add_rec(changes, a, prev, seen))
     return prev
 
 
