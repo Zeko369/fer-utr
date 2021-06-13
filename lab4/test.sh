@@ -8,7 +8,7 @@ then
   errors=""
   error_count=0
 
-  for i in $(seq 0 $count)
+  for i in $(seq 1 $count)
   do
     dir=$(printf "%0*d\n" 2 $i)
     echo "Test $dir"
